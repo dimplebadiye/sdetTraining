@@ -57,7 +57,7 @@ public class ELSC_011Steps {
 	@And("^user selects '(.*)' from 'Group Permision' dropdown$")
 	public void selectGroupPermission(String option) throws Throwable {
 		classes.getDropDownButton().click();
-		classes.getOpenOption().click();
+		classes.getOption(option).click();
 	}
 	
 	@And("^user click 'Add' button$")

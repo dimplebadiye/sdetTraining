@@ -33,8 +33,8 @@ public class ClassesPage extends Hooks {
 		return driver.findElement(By.xpath("//button[@class = 'btn dropdown-toggle btn-default']"));
 	}
 	
-	public WebElement getOpenOption() {
-		return driver.findElement(By.xpath("//span[text() = 'Open']/parent::a"));
+	public WebElement getOption(String option) {
+		return driver.findElement(By.xpath("//span[text() = '" + option + "']/parent::a"));
 	}
 	
 	public WebElement getAddButton() {
@@ -80,6 +80,10 @@ public class ClassesPage extends Hooks {
 	}
 	
 	public void enterDataInAddClassesPage() throws Throwable {
-		testData.readExcel();
+		List<String> inputs = testData.readExcel();
+		getNameField().sendKeys(inputs.get(0));
+		getDescriptionField().sendKeys(inputs.get(1));
+		getDropDownButton().click();
+		getOption(inputs.get(2)).click();
 	}
 }
